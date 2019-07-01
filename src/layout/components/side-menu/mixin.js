@@ -1,4 +1,8 @@
+import CommonIcon from '@/components/common-icon'
 export default {
+  components: {
+    CommonIcon
+  },
   methods: {
     showChildren (item) {
       return (
