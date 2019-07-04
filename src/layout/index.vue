@@ -1,10 +1,12 @@
 <template>
   <Layout style="height: 100%" class="layout-wrapper">
     <Sider :width="180" hide-trigger collapsible v-model="collapsed">
-      <side-menu :menu-list="menuList" theme="dark" :active-name="$route.name" @on-select="turnToPage"></side-menu>
+      <side-menu :menu-list="menuList" theme="dark" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage"></side-menu>
     </Sider>
     <Layout>
-      <Header class="header-con">头部</Header>
+      <Header class="header-con">
+        <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" />
+      </Header>
       <Content>
         <router-view />
       </Content>
@@ -14,9 +16,10 @@
 
 <script>
 import SideMenu from './components/side-menu'
+import HeaderBar from './components/header-bar'
 export default {
   name: 'layout',
-  components: { SideMenu },
+  components: { SideMenu, HeaderBar },
   data () {
     return {
       collapsed: false
@@ -35,6 +38,9 @@ export default {
         return
       }
       this.$router.push({ name })
+    },
+    handleCollapsedChange (state) {
+      this.collapsed = state
     }
   },
   mounted () {

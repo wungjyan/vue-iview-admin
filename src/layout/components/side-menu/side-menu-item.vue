@@ -25,22 +25,12 @@
 
 <script>
 import mixin from './mixin.js'
+import itemMixin from './item-mixin.js'
 export default {
-  mixins: [mixin],
-  props: {
-    parentItem: {
-      type: Object,
-      default: () => { }
-    }
-  },
+  mixins: [mixin, itemMixin],
   components: {},
   data () {
     return {
-    }
-  },
-  computed: {
-    children () {
-      return this.parentItem.children
     }
   },
   methods: {},

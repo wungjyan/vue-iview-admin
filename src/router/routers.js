@@ -6,7 +6,9 @@ export default [
     name: 'test',
     component: Layout,
     meta: {
-      title: '测试'
+      title: '测试',
+      icon: 'md-analytics',
+      showAlways: true
     },
     children: [
       {
@@ -33,6 +35,7 @@ export default [
     component: Layout,
     meta: {
       title: '这是demo',
+      icon: 'logo-buffer',
       showAlways: true
     },
     children: [
