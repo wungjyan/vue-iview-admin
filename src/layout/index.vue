@@ -1,14 +1,21 @@
 <template>
   <Layout style="height: 100%" class="layout-wrapper">
     <Sider :width="180" hide-trigger collapsible v-model="collapsed">
-      <side-menu :menu-list="menuList" theme="dark" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage"></side-menu>
+      <side-menu :menu-list="menuList" theme="dark" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage">
+        <div class="logo-con" v-if="config.logo.show">
+          <img v-show="!collapsed" :src="config.logo.maxLogo" key="max-logo" />
+          <img v-show="collapsed" :src="config.logo.minLogo" key="min-logo" />
+        </div>
+      </side-menu>
     </Sider>
     <Layout>
       <Header class="header-con">
         <header-bar :collapsed="collapsed" @on-coll-change="handleCollapsedChange" />
       </Header>
       <Content>
-        <router-view />
+        <transition name="fade-transform" mode="out-in">
+          <router-view />
+        </transition>
       </Content>
     </Layout>
   </Layout>
@@ -17,12 +24,14 @@
 <script>
 import SideMenu from './components/side-menu'
 import HeaderBar from './components/header-bar'
+import config from '@/config'
 export default {
   name: 'layout',
   components: { SideMenu, HeaderBar },
   data () {
     return {
-      collapsed: false
+      collapsed: false,
+      config
     }
   },
   computed: {
@@ -44,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$route)
+    console.log(config)
   }
 }
 </script>
