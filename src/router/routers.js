@@ -1,15 +1,16 @@
 import Layout from '@/layout/index'
-
+import config from '@/config'
+const { homeName } = config
 export default [
   {
     path: '/',
-    redirect: '/dashboard',
-    name: '_dashboard',
+    redirect: `/${homeName}`,
+    name: `_${homeName}`,
     component: Layout,
     children: [
       {
-        path: '/dashboard',
-        name: 'dashboard',
+        path: `/${homeName}`,
+        name: homeName,
         meta: {
           title: '首页',
           icon: 'md-apps'
@@ -51,7 +52,6 @@ export default [
     name: 'menu2',
     component: Layout,
     meta: {
-      title: '菜单二',
       icon: 'ios-albums',
       showAlways: true
     },
@@ -71,6 +71,24 @@ export default [
           title: '子菜单二'
         },
         component: () => import('@/views/menu2/child2')
+      }
+    ]
+  },
+  {
+    path: '/menu3',
+    name: 'menu3',
+    meta: {
+      title: '菜单三'
+    },
+    component: Layout,
+    children: [
+      {
+        path: 'child1',
+        name: 'child3-1',
+        meta: {
+          title: '子菜单3-1'
+        },
+        component: () => import('@/views/menu3')
       }
     ]
   }

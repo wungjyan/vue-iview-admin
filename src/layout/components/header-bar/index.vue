@@ -1,14 +1,16 @@
 <template>
   <div class="header-bar">
     <sider-trigger :collapsed="collapsed" icon="md-menu" @on-change="handleCollpasedChange"></sider-trigger>
+    <custom-bread-crumb :list="breadCrumbList" />
   </div>
 </template>
 
 <script>
 import SiderTrigger from './sider-trigger.vue'
+import CustomBreadCrumb from './custom-bread-crumb'
 export default {
   name: 'HeaderBar',
-  components: { SiderTrigger },
+  components: { SiderTrigger, CustomBreadCrumb },
   props: {
     collapsed: {
       type: Boolean,
@@ -19,7 +21,11 @@ export default {
     return {
     }
   },
-  computed: {},
+  computed: {
+    breadCrumbList () {
+      return this.$store.state.app.breadCrumbList
+    }
+  },
   methods: {
     handleCollpasedChange (state) {
       this.$emit('on-coll-change', state)
@@ -29,4 +35,9 @@ export default {
 }
 </script>
 <style scoped>
+.header-bar {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 </style>

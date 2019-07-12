@@ -42,6 +42,7 @@ export default {
   padding: 6px;
   width: 40px;
   height: 40px;
+  display: inline-block;
   text-align: center;
   color: #5c6b77;
   margin-top: 12px;

@@ -25,6 +25,7 @@
 import SideMenu from './components/side-menu'
 import HeaderBar from './components/header-bar'
 import config from '@/config'
+import { mapMutations } from 'vuex'
 export default {
   name: 'layout',
   components: { SideMenu, HeaderBar },
@@ -40,6 +41,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'setBreadCrumb'
+    ]),
     turnToPage (name) {
       // 路由名带有href时直接跳转外部链接
       if (name.indexOf('isTurnByHref_') > -1) {
@@ -50,6 +54,11 @@ export default {
     },
     handleCollapsedChange (state) {
       this.collapsed = state
+    }
+  },
+  watch: {
+    '$route' (newRoute) {
+      this.setBreadCrumb(newRoute)
     }
   },
   mounted () {

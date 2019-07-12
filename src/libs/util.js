@@ -1,3 +1,6 @@
+import config from '@/config'
+const { homeName } = config
+
 const hasChild = item => {
   return item.children && item.children.length !== 0
 }
@@ -49,10 +52,29 @@ export const findNodeUpperByClasses = (ele, classes) => {
   let parentNode = ele.parentNode
   if (parentNode) {
     let classList = parentNode.classList
-    if (classList && classes.every(className => classList.contains(className))) {
+    if (
+      classList &&
+      classes.every(className => classList.contains(className))
+    ) {
       return parentNode
     } else {
       return findNodeUpperByClasses(parentNode, classes)
     }
   }
+}
+
+// 获取面包屑列表
+export const getBreadCrumbList = route => {
+  if (route.name === homeName) {
+    return []
+  }
+  let matched = route.matched
+  let arr = []
+  matched.forEach(item => {
+    let title = (item.meta && item.meta.title) || item.name
+    arr.push({
+      title
+    })
+  })
+  return arr
 }
