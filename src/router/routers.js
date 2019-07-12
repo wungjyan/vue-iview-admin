@@ -2,50 +2,75 @@ import Layout from '@/layout/index'
 
 export default [
   {
-    path: '/test',
-    name: 'test',
+    path: '/',
+    redirect: '/dashboard',
+    name: '_dashboard',
     component: Layout,
-    meta: {
-      title: '测试',
-      icon: 'md-analytics',
-      showAlways: true
-    },
     children: [
       {
-        path: 'test',
-        name: 'testChild',
+        path: '/dashboard',
+        name: 'dashboard',
         meta: {
-          title: '测试的子类'
+          title: '首页',
+          icon: 'md-apps'
         },
-        component: () => import('@/views/test/index.vue')
-      },
-      {
-        path: 'test2',
-        name: 'testChild2',
-        meta: {
-          title: '测试的子类2'
-        },
-        component: () => import('@/views/test2/index.vue')
+        component: () => import('@/views/dashboard')
       }
     ]
   },
   {
-    path: '/demo',
-    name: 'demo',
+    path: '/menu1',
+    name: 'menu1',
     component: Layout,
     meta: {
-      title: '这是demo',
-      icon: 'logo-buffer',
+      title: '菜单一',
+      icon: 'ios-albums',
       showAlways: true
     },
     children: [
       {
-        path: 'demo1',
-        name: 'demo1',
+        path: 'child1',
+        name: 'menu1_child1',
         meta: {
-          title: '这是demo1'
+          title: '子菜单一'
         },
-        component: () => import('@/views/test2/index.vue')
+        component: () => import('@/views/menu1/child1')
+      },
+      {
+        path: 'child2',
+        name: 'menu1_child2',
+        meta: {
+          title: '子菜单二'
+        },
+        component: () => import('@/views/menu1/child2')
+      }
+    ]
+  },
+  {
+    path: '/menu2',
+    name: 'menu2',
+    component: Layout,
+    meta: {
+      title: '菜单二',
+      icon: 'ios-albums',
+      showAlways: true
+    },
+    children: [
+      {
+        path: 'child1',
+        name: 'menu2_child1',
+        meta: {
+          title: '子菜单一'
+        },
+        component: () => import('@/views/menu2/child1')
+      },
+      {
+        path: 'child2',
+        name: 'menu2_child2',
+        meta: {
+          title: '子菜单二'
+        },
+        component: () => import('@/views/menu2/child2')
       }
     ]
   }

@@ -2,7 +2,7 @@
   <Submenu :name="parentItem.name">
     <template slot="title">
       <common-icon :type="parentItem.icon || ''" />
-      {{showTitle(parentItem)}}
+      <span>{{showTitle(parentItem)}}</span>
     </template>
     <template v-for="item in children">
       <template v-if="item.children && item.children.length === 1">
@@ -27,6 +27,7 @@
 import mixin from './mixin.js'
 import itemMixin from './item-mixin.js'
 export default {
+  name: 'SideMenuItem',
   mixins: [mixin, itemMixin],
   components: {},
   data () {
@@ -37,5 +38,3 @@ export default {
   mounted () { }
 }
 </script>
-<style scoped>
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>这是测试页面</div>
+  <div>chil1-1</div>
 </template>
 
 <script>

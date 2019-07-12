@@ -1,5 +1,5 @@
 <template>
-  <div>这是测试页面</div>
+  <div>child1</div>
 </template>
 
 <script>
@@ -9,13 +9,9 @@ export default {
     return {
     }
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {},
-  mounted () {
-    console.log(this.$store.getters)
-  }
+  mounted () { }
 }
 </script>
 <style scoped>
